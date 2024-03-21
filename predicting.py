@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 import os
 from sklearn.preprocessing import StandardScaler
-#from skimage.filters import threshold_otsu
+from skimage import util, transform
 
 
 def preprocess_image(image):
@@ -33,7 +33,7 @@ def preprocess_image(image):
     return img_ready.flatten()
 
 def make_prediction(image):
-    model = joblib.load("C:/Users/tovat/OneDrive/Dokument/EC_utbildning/MachineLearning/final_model.pkl")
+    model = joblib.load("final_model.pkl")
     predicted_number = model.predict([image])
 
     return predicted_number[0]
